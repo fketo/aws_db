@@ -62,13 +62,3 @@ variable "ec2" {
   }
 }
 
-# ansible
-variable "ansible" {
-  description = "ansible attributes"
-  type = map
-  default = {
-    "ansible_inv_template"  = "./files/templates/ansible_inventory.template"
-    "ansible_inv"  = "../ansible/inventories/inventory"
-  }
-}
-

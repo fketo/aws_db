@@ -13,8 +13,8 @@ provider "aws" {
 }
 
 # module call
-module "db_env" {
-  source = "./modules/db_env"
+module "bastion_env" {
+  source = "./modules/bastion_env"
 
   vpc_cidr = var.vpc_cidr
 

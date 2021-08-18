@@ -2,29 +2,19 @@
 variable "profile" {
   type = string
   description = "profile aws-cli"
-  default = "devops"
+  default = "NONE"
 }
 variable "region" {
   type = string
   description = "region aws-cli"
-  default = "eu-central-1"
+  default = "NONE"
 }
 
 # naming
 variable "namespace" {
   type = string
   description = "namespace for building unique name tags"
-  default = "hsdeployment"
-}
-
-# ssh stuff
-variable "ssh_credentials" {
-  description = "ssh key files"
-  type = map
-  default = {
-    "pub_key"  = "./files/keys/ec2-user.pub"
-    "priv_key"  = "./files/keys/ec2-user"
-  }
+  default = "namespace"
 }
 
 # vpc
@@ -59,6 +49,8 @@ variable "ec2" {
     "ebs_vol_size" = 1
     "ebs_vol_type" = "gp2"
     "cloud_init_file" = "./files/cloud_init/cloud_init_ansible_user.yml"
+    "ssh_pub_key" = "./files/keys/ec2-user.pub"
+    "ssh_priv_key" = "./files/keys/ec2-user"
   }
 }
 

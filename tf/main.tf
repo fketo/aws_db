@@ -8,22 +8,20 @@ terraform {
 
 # aws client
 provider "aws" {
-  profile = var.profile
-  region  = var.region
+  profile = "devops"
+  region  = "eu-central-1"
 }
 
 # module call
 module "bastion_env" {
-  source = "./modules/bastion_env"
+  source = "./modules/base"
 
-  vpc_cidr = var.vpc_cidr
+  # only need to be set if there is a change from the default
+  # look at ./modules/base/variables_defaults.tf
 
-  subnet_cidrs = var.subnet_cidrs
-  av_zones = var.av_zones
+  subnet_cidrs =  ["128.0.1.0/24"]
 
-  namespace = var.namespace
+  av_zones = ["eu-central-1a"]
 
-  ssh_credentials = var.ssh_credentials
-
-  ec2 = var.ec2
+  namespace = "bastion_etomer"
 }

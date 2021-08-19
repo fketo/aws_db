@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 # module call
-module "bastion_env" {
+module "bastion" {
   source = "./modules/base"
 
   # only need to be set if there is a change from the default
@@ -23,5 +23,5 @@ module "bastion_env" {
 
   av_zones = ["eu-central-1a"]
 
-  namespace = "bastion_etomer"
+  namespace = "public_env"
 }

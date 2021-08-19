@@ -21,7 +21,7 @@ module "public" {
   # keep in mind, maps have to declarated with all vars (no matter, if only one variable changes)
 
   # clear ebs list -> no ebs will attached
-  ebs = {}
+  ebs = []
 
   # set namespace as element in naming schema
   namespace = "public_env"

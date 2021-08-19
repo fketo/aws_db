@@ -44,7 +44,7 @@ variable "ec2" {
   default = {
     "instance_ami"  = "ami-0a02ee601d742e89f"
     "instance_type"  = "t2.nano"
-    "instance_count" = 3
+    "instance_count" = 1
     "ssh_pub_key" = "./files/keys/ec2-user.pub"
     "ssh_priv_key" = "./files/keys/ec2-user"
   }

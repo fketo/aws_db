@@ -9,7 +9,7 @@ resource "aws_subnet" "base" {
 
   map_public_ip_on_launch = "true"
   tags = {
-    Name = join("_",[var.namespace, "subnet", count.index])
-    av_zone = element(var.av_zones,count.index)
+    #Name = join("_",[var.namespace, "subnet", count.index, element(var.av_zones,count.index) ])
+    Name = join("_",[var.namespace, "subnet", element(var.av_zones,count.index) ])
   }
 }

@@ -6,5 +6,5 @@ resource "local_file" "inventory" {
       public_fqdns = aws_instance.base[*].public_dns
     }
   )
-  filename = var.ansible["ansible_inv"]
+  filename = join("_",[var.ansible["ansible_inv"], var.namespace])
 }

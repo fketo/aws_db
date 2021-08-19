@@ -20,7 +20,7 @@ module "bastion" {
   # look at ./modules/base/variables_defaults.tf
   # keep in mind, maps have to declarated with all vars (no matter, if only one variable changes)
 
-  subnet_cidrs =  ["128.0.1.0/24", "128.0.2.0/24"]
+  subnet_cidrs =  ["128.0.1.0/24"]
 
   av_zones = ["eu-central-1a"]
 

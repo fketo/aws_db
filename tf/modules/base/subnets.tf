@@ -1,5 +1,5 @@
 # subnet(s)
-resource "aws_subnet" "base_pub" {
+resource "aws_subnet" "base" {
   vpc_id = aws_vpc.base.id
   count = length(var.subnet_cidrs) 
 
@@ -7,9 +7,9 @@ resource "aws_subnet" "base_pub" {
 
   cidr_block = element(var.subnet_cidrs,count.index)
 
-  map_base_ip_on_launch = "true"
+  map_public_ip_on_launch = "true"
   tags = {
-    Name = join("_",[var.namespace, "subnet_pub", count.index])
+    Name = join("_",[var.namespace, "subnet", count.index])
     av_zone = element(var.av_zones,count.index)
   }
 }

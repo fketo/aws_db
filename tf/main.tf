@@ -18,6 +18,7 @@ module "bastion" {
 
   # only need to be set if there is a change from the default
   # look at ./modules/base/variables_defaults.tf
+  # keep in mind, maps have to declarated with all vars (no matter, if only one variable changes)
 
   subnet_cidrs =  ["128.0.1.0/24"]
 

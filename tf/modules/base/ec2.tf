@@ -12,8 +12,8 @@ resource "aws_instance" "base" {
   dynamic "ebs_block_device" {
    for_each = var.ebs
    content {
-     device_name = ebs_block_device.ebs_device
-     volume_type = ebs_block_device.ebs_vol_type
+     device_name = ebs_block_device.value.ebs_device
+     volume_type = ebs_block_device.value.ebs_vol_type
      volume_size = ebs_block_device.value.ebs_vol_size
     }
   }

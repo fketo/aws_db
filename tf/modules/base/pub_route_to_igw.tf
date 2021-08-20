@@ -3,7 +3,7 @@ resource "aws_route_table" "base" {
   vpc_id = aws_vpc.base.id
   route {
         cidr_block = "0.0.0.0/0"
-        gateway_id = aws_internet_gateway.base.id
+        gateway_id = aws_internet_gateway.base.0.id
     }
   tags = {
     Name = join("_",[var.namespace, "rtb"])

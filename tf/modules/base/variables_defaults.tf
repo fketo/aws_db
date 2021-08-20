@@ -14,7 +14,13 @@ variable "region" {
 variable "namespace" {
   type = string
   description = "namespace for building unique name tags"
-  default = "namespace"
+  default = "NONE"
+}
+
+# is_public {
+variable "is_public" {
+  type = bool
+  default = true
 }
 
 # vpc

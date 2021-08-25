@@ -1,3 +1,8 @@
+output "vpc_id" {
+  description = "The ID of the VPC"
+  value       = concat(aws_vpc.pub.*.id, [""])[0]
+}
+
 resource "local_file" "inventory" {
   content = templatefile(var.ansible["ansible_inv_template"],
     {

@@ -23,10 +23,10 @@ variable "with_ec2" {
   default = true
 }
 
-# vpc
-variable "vpc_cidr" {
-  description = "vpc_cidr"
-  default = "128.0.0.0/16"
+# vpc id
+variable "vpc_id" {
+  description = "vpc_id, get from module call"
+  default = "NONE"
 }
 
 # subnets (keep in mind the aws elb can't deal with multiple subnets in a av-zone)
@@ -59,7 +59,7 @@ variable "ec2" {
     "instance_ami"  = "ami-0a02ee601d742e89f"
     "instance_type"  = "t2.nano"
     "instance_count" = 1
-    "ssh_priv_key" = "./files/keys/priv-ec2-user.priv"
+    "ssh_pub_key" = "./files/keys/priv-ec2-user.pub"
     "ssh_priv_key" = "./files/keys/priv-ec2-user"
   }
 }

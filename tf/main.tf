@@ -38,6 +38,9 @@ module "public" {
 module "private" {
   source = "./modules/private"
 
+  # vpc id from module public
+  vpc_id = module.public.vpc_id
+
   # subnet cidr / av_zone (these both have to be in conjunction)
   subnet_cidrs = ["128.0.2.0/24", "128.0.3.0/24","128.0.4.0/24"]
   av_zones = ["eu-central-1a", "eu-central-1b","eu-central-1c",]

@@ -1,10 +1,6 @@
 # create routing table
 resource "aws_route_table" "priv" {
-  vpc_id = aws_vpc.priv.id
-  route {
-        cidr_block = "0.0.0.0/0"
-        gateway_id = aws_internet_gateway.priv.0.id
-    }
+  vpc_id = var.vpc_id
   tags = {
     Name = join("_",[var.namespace, "rt_priv"])
     }

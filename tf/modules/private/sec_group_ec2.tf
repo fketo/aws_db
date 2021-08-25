@@ -1,7 +1,7 @@
 # security group ec2
 resource "aws_security_group" "priv" {
   name = join("_",[var.namespace, "sg_ec2"])
-  vpc_id = aws_vpc.priv.id
+  vpc_id = var.vpc_id
   ingress {
       from_port   = 22
       to_port     = 22

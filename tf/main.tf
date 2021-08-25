@@ -26,7 +26,7 @@ module "public" {
 
   # subnet cidr / av_zone (these both have to be in conjunction)
   subnet_cidrs = ["128.0.1.0/24"]
-  av_zones = ["eu-central-1a"]
+  av_zones     = ["eu-central-1a"]
 
   # clear ebs list -> no ebs will attached
   ebs = []
@@ -35,6 +35,7 @@ module "public" {
   namespace = "public_env"
 }
 
+# module call
 module "private" {
   source = "./modules/private"
 
@@ -42,8 +43,8 @@ module "private" {
   vpc_id = module.public.vpc_id
 
   # subnet cidr / av_zone (these both have to be in conjunction)
-  subnet_cidrs = ["128.0.2.0/24", "128.0.3.0/24","128.0.4.0/24"]
-  av_zones = ["eu-central-1a", "eu-central-1b","eu-central-1c",]
+  subnet_cidrs = ["128.0.2.0/24", "128.0.3.0/24", "128.0.4.0/24"]
+  av_zones     = ["eu-central-1a", "eu-central-1b", "eu-central-1c", ]
 
   # if false is set no instances are created 
   with_ec2 = false
@@ -53,3 +54,13 @@ module "private" {
 
   namespace = "private_env"
 }
+
+# module call
+#module "rds" {
+#  source = "./modules/rds"
+#
+#  # vpc id from module public
+#  subnet_ids = module.private.subnet_ids
+#
+#  namespace = "private_env"
+#}

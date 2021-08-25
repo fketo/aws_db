@@ -1,5 +1,5 @@
-output "subnet_group" {
+output "fuer_frank" {
   description = "list of subnet ids"
-  value       = module.private.subnet_group
+  value       = module.private.subnet_ids
 }
 

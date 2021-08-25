@@ -1,6 +1,5 @@
-output "subnet_group" {
+output "subnet_ids" {
   description = "list of subnet ids"
-  #value       = concat(aws_vpc.pub.*.id, [""])[0]
   value       = aws_subnet.priv[*].id
 }
 

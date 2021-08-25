@@ -1,13 +1,13 @@
 # ec2
-resource "aws_instance" "base" {
+resource "aws_instance" "pub" {
   ami           = var.ec2["instance_ami"]
   instance_type = var.ec2["instance_type"]
 
   count = length(var.subnet_cidrs) * var.ec2["instance_count"]
-  subnet_id = element(aws_subnet.base[*].id,count.index)
+  subnet_id = element(aws_subnet.pub[*].id,count.index)
 
-  vpc_security_group_ids = [aws_security_group.base.id]
-  key_name = aws_key_pair.base.key_name
+  vpc_security_group_ids = [aws_security_group.pub.id]
+  key_name = aws_key_pair.pub.key_name
   
   dynamic "ebs_block_device" {
    for_each = var.ebs
@@ -19,6 +19,6 @@ resource "aws_instance" "base" {
   }
 
   tags = {
-    Name = join("_",[var.namespace, "ec2", count.index, element(var.av_zones,count.index) ])
+    Name = join("_",[var.namespace, "ec2_pub", count.index, element(var.av_zones,count.index) ])
   }
 }

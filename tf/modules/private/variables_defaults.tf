@@ -17,8 +17,8 @@ variable "namespace" {
   default = "NONE"
 }
 
-# is_public {
-variable "is_public" {
+# if false is set no instances are created {
+variable "with_ec2" {
   type = bool
   default = true
 }
@@ -32,7 +32,7 @@ variable "vpc_cidr" {
 # subnets (keep in mind the aws elb can't deal with multiple subnets in a av-zone)
 # default = ["128.0.1.0/24", "128.0.2.0/24", "128.0.3.0/24"] 
 variable "subnet_cidrs" {
-  description = "pub_subnet_cidrs"
+  description = "priv_subnet_cidrs"
   type = list
   default = ["128.0.1.0/24"] 
 }
@@ -59,8 +59,8 @@ variable "ec2" {
     "instance_ami"  = "ami-0a02ee601d742e89f"
     "instance_type"  = "t2.nano"
     "instance_count" = 1
-    "ssh_pub_key" = "./files/keys/ec2-user.pub"
-    "ssh_priv_key" = "./files/keys/ec2-user"
+    "ssh_priv_key" = "./files/keys/priv-ec2-user.priv"
+    "ssh_priv_key" = "./files/keys/priv-ec2-user"
   }
 }
 

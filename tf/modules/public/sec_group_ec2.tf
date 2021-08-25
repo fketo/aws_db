@@ -1,7 +1,7 @@
 # security group ec2
-resource "aws_security_group" "base" {
+resource "aws_security_group" "pub" {
   name = join("_",[var.namespace, "sg_ec2"])
-  vpc_id = aws_vpc.base.id
+  vpc_id = aws_vpc.pub.id
   ingress {
       from_port   = 22
       to_port     = 22

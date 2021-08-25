@@ -12,13 +12,21 @@ provider "aws" {
   region  = "eu-central-1"
 }
 
+
+# only need to be set if there is a change from the default
+# look at ./modules/base/variables_defaults.tf for default settings in the module
+# keep in mind, maps have to declarated with all vars (no matter, if only one variable changes)
+
 # module call
 module "public" {
-  source = "./modules/base"
+  source = "./modules/public"
 
-  # only need to be set if there is a change from the default
-  # look at ./modules/base/variables_defaults.tf for default settings in the module
-  # keep in mind, maps have to declarated with all vars (no matter, if only one variable changes)
+  # vpc cidr
+  vpc_cidr = "128.0.0.0/16"
+
+  # subnet cidr / av_zone (these both have to be in conjunction)
+  subnet_cidrs = ["128.0.1.0/24"]
+  av_zones = ["eu-central-1a"]
 
   # clear ebs list -> no ebs will attached
   ebs = []
@@ -27,16 +35,18 @@ module "public" {
   namespace = "public_env"
 }
 
-#module "private" {
-#  source = "./modules/base"
-#
-  # only need to be set if there is a change from the default
-  # look at ./modules/base/variables_defaults.tf
-  # keep in mind, maps have to declarated with all vars (no matter, if only one variable changes)
+module "private" {
+  source = "./modules/private"
 
-#  subnet_cidrs =  ["128.0.1.0/24"]
+  # subnet cidr / av_zone (these both have to be in conjunction)
+  subnet_cidrs = ["128.0.2.0/24", "128.0.3.0/24","128.0.4.0/24"]
+  av_zones = ["eu-central-1a", "eu-central-1b","eu-central-1c",]
 
-#  av_zones = ["eu-central-1a"]
+  # if false is set no instances are created 
+  with_ec2 = false
 
-#  namespace = "public_env"
-#}
+  # clear ebs list -> no ebs will attached
+  ebs = []
+
+  namespace = "private_env"
+}

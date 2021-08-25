@@ -1,6 +1,6 @@
 # subnet(s)
-resource "aws_subnet" "base" {
-  vpc_id = aws_vpc.base.id
+resource "aws_subnet" "pub" {
+  vpc_id = aws_vpc.pub.id
   count = length(var.subnet_cidrs) 
 
   availability_zone = element(var.av_zones,count.index)

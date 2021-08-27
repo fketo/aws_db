@@ -13,3 +13,9 @@ resource "local_file" "inventory" {
   )
   filename = join("_",[var.ansible["ansible_inv"], var.namespace])
 }
+
+
+output "aws_subnet_group_id" {
+  description = "ID of database subnet group"
+  value       = aws_db_subnet_group.default.id
+}

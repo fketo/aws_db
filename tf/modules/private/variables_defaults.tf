@@ -85,4 +85,3 @@ variable "ansible" {
     "ansible_inv"          = "../ansible/inventories/inventory"
   }
 }
-
